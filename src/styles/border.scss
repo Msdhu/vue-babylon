@@ -1,0 +1,123 @@
+@mixin borderReact($color: #000, $type: all, $px: 2px) {
+  position: relative;
+  border: none;
+
+  &:after {
+    content: '';
+    position: absolute;
+  }
+  @if $type == all {
+    &:after {
+      top: 0;
+      left: 0;
+      border: $px solid $color;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @else if $type == top {
+    &:after {
+      background: $color;
+      width: 100%;
+      height: $px;
+      left: 0;
+      top: 0;
+    }
+  }
+  @else if $type == bottom {
+    &:after {
+      background: $color;
+      width: 100%;
+      height: $px;
+      left: 0;
+      bottom: 0;
+    }
+  }
+  @else if $type == left {
+    &:after {
+      background: $color;
+      height: 100%;
+      width: $px;
+      top: 0;
+      left: 0;
+    }
+  }
+  @else if $type == right {
+    &:after {
+      background: $color;
+      height: 100%;
+      width: $px;
+      top: 0;
+      right: 0;
+    }
+  }
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    @if $type == all {
+      &:after {
+        width: 200%;
+        height: 200%;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+      }
+    }
+    @else if $type == top {
+      &:after {
+        transform: scaleY(0.5);
+        transform-origin: 0 0;
+      }
+    }
+    @else if $type == bottom {
+      &:after {
+        transform: scaleY(0.5);
+        transform-origin: 0 100%;
+      }
+    }
+    @else if $type == left {
+      &:after {
+        transform: scaleX(0.5);
+        transform-origin: 0 0;
+      }
+    }
+    @else if $type == right {
+      &:after {
+        transform: scaleX(0.5);
+        transform-origin: 100% 0;
+      }
+    }
+  };
+  @media (-webkit-min-device-pixel-ratio:3) {
+    @if $type == all{
+      &:after {
+        width: 300%;
+        height: 300%;
+        transform: scale(0.333333);
+        transform-origin: 0 0;
+      }
+    }
+    @else if $type == top {
+      &:after {
+        transform: scaleY(0.333333);
+        transform-origin: 0 0;
+      }
+    }
+    @else if $type == bottom {
+      &:after {
+        transform: scaleY(0.333333);
+        transform-origin: 0 100%;
+      }
+    }
+    @else if $type == left {
+      &:after {
+        transform: scaleX(0.333333);
+        transform-origin: 0 0;
+      }
+    }
+    @else if $type == right {
+      &:after {
+        transform: scaleX(0.333333);
+        transform-origin: 100% 0;
+      }
+    }
+  };
+}

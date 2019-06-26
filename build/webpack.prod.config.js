@@ -5,7 +5,6 @@ const cssnano = require('cssnano');
 const postcsspxtoviewport = require('postcss-px-to-viewport');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
@@ -34,15 +33,6 @@ module.exports = {
       minSize: 0,
       chunks: 'all',
     },
-    minimize: true,
-    minimizer: [new UglifyJsPlugin({
-      parallel: true,
-      uglifyOptions: {
-        compress: {
-          drop_console: true,
-        },
-      },
-    })],
   },
   resolve: {
     extensions: ['.js', '.json', '.vue'],
